@@ -20,7 +20,7 @@ test_train_x<-rbind(test_x,train_x)
 test_train_subject<-rbind(test_subject,train_subject)
 test_train_y<-rbind(test_y,train_y)
 
-####cerating a data subset using grep function for the list of variable which are mean & standard deviation.
+####creating a data subset using grep function for the list of variable which are mean & standard deviation.
 
 x<-grep("std|mean",feature$V2)
 
@@ -34,14 +34,14 @@ names(y)<-f[,2]
 z<-cbind(test_train_subject,test_train_y,y)
 colnames(z)[1]<-"subject"
 
-####adding activity to out data set
+####adding activity to our data set
 
 act<-read.table("UCI HAR Dataset/activity_labels.txt")
 w<-merge(z,act,all=TRUE)
 w$V1<-NULL
 colnames(w)[81]<-"activity"
 
-#### Renaming the column vairbales
+#### Renaming the column variables
 lower<-tolower(names(w))
 fine<-gsub("-","",lower)
 newcolname<-gsub("\\(\\)","",fine)
